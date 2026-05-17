@@ -1,0 +1,16 @@
+import express from "express";
+import { getUser, login, register, logout, forgotPassword, updatePassword, resetPassword, updateProfile } from "../controllers/authController.js";
+import { isAuthenticated } from "../middlewares/authMiddleware.js";
+
+const router = express.Router();
+
+router.post("/register", register);
+router.post("/login", login);
+router.get("/logout", isAuthenticated, logout);
+router.get("/user", isAuthenticated, getUser);
+router.post("/password/forgot", forgotPassword);
+router.put("/password/reset/:token", resetPassword);
+router.put("/password/update", isAuthenticated, updatePassword);
+router.put("/profile/update", isAuthenticated, updateProfile);
+
+export default router;
