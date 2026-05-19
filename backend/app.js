@@ -5,10 +5,11 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import { errorMiddleware } from "./middlewares/errorMiddlewares.js";
 import authRoutes from "./router/authRoutes.js";
-import productRouter from "./router/productRoutes.js";
+import productRouter from './router/productRoutes.js';
 import adminRoutes from "./router/adminRoutes.js";
 import createTables from "./database/createTables.js";
 import Stripe from "stripe";
+import orderRouter from './router/orderRoutes.js';
 
 const app = express();
 
@@ -65,9 +66,10 @@ app.use(fileUpload({
     tempFileDir: "/uploads",
 }));
 
-app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/products", productRouter);
-app.use("/api/v1/admin", adminRoutes);
+app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/order", orderRouter);
 
 createTables();
 
