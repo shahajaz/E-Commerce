@@ -212,6 +212,28 @@ export const placeNewOrder = catchAsync(async (req, res, next) => {
 
                 // Update Orders
                 export const updateOrderStatus = catchAsyncErrors(async (req, res, next) => {
+                    const { status } = req.body;
+                    if (!status){
+                        return next(new ErrorHandler("Provide a valid status for order.", 400));
+                    }
+                    const {orderId} = req.params;
+                    const results = await database.query(`
+                        SELECT * FROM orders WHERE id = $1
+                        `, [orderId]
+                    );
+
+                    if (results.rowCount.length === 0){
+                        return next(new ErrorHandler("Invalid order ID.", 404));
+                    }
+
+                    const updatedOrder = await database.query(`
+                        UPDATE orders SET order_status = $1 WHERE id = $2 RETU
+                        `)
+                });
+
+
+                //Delete Orders
+                export const deleteOrder = catchAsyncErrors(async (req, res, next) => {
 
                 });
 
