@@ -4,12 +4,12 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import { errorMiddleware } from "./middlewares/errorMiddlewares.js";
-import authRoutes from "./router/authRoutes.js";
 import productRouter from './router/productRoutes.js';
-import adminRoutes from "./router/adminRoutes.js";
+import adminRouter from "./router/adminRoutes.js";
 import createTables from "./database/createTables.js";
 import Stripe from "stripe";
 import orderRouter from './router/orderRoutes.js';
+import authRouter from "./router/authRoutes.js";
 
 const app = express();
 
