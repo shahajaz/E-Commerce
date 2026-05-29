@@ -61,10 +61,13 @@ app.post("/api/v1/webhook", express.raw({ type: "application/json" }), async(req
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
+
+
 app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: "/uploads",
-}));
+})
+);
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/products", productRouter);

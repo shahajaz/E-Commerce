@@ -1,23 +1,23 @@
 import pkg from "pg";
-const { Pool } = pkg;
+const { Client } = pkg;
 
-const pool = new Pool({
-    user: "postgres",          // 🔥 hardcoded
-    host: "localhost",
-    database: "ecommerce",
-    password: "123456789",
-    port: 5432,
+const database = new Client({
+    user: process.env.DB_USER,
+    // Convert the password explicitly to a String here 👇
+    password: String(process.env.DB_PASSWORD), 
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    port: Number(process.env.DB_PORT),
 });
 
 export const connectDB = async () => {
     try {
-        const client = await pool.connect();
-        console.log("Database connected successfully");
-        client.release();
+        await database.connect();
+        console.log("Connected to the database Successfully");
     } catch (error) {
-        console.error("Error connecting to database:", error.message);
+        console.error("Database connection failed:", error);
         process.exit(1);
     }
 };
 
-export default pool;
+export default database;

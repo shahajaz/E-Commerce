@@ -3,7 +3,6 @@ dotenv.config({
     path: "./config/config.env",
 });
 
-
 import app from "./app.js";
 import { v2 as cloudinary } from "cloudinary";
 import { createTables } from "./utils/createTables.js";
