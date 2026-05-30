@@ -13,6 +13,7 @@ export async function createProductsTable() {
         created_by UUID NOT NULL,     
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
         FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE CASCADE);`;     
+        
         await database.query(query);   
     } 
     catch (error) {     

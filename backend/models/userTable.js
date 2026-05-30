@@ -8,7 +8,7 @@ export async function createUserTable() {
             name VARCHAR(100) NOT NULL CHECK (char_length(name) >= 5),
             email VARCHAR(100) UNIQUE NOT NULL,
             password TEXT NOT NULL CHECK (char_length(password) >= 8),
-            role VARCHAR(20) NOT NULL CHECK (role IN ('User', 'Admin')),
+            role VARCHAR(10) NOT NULL CHECK (role IN ('User', 'Admin')),
             avatar JSONB DEFAULT NULL,
             reset_password_token TEXT DEFAULT NULL,
             reset_password_expires TIMESTAMP DEFAULT NULL,

@@ -13,7 +13,7 @@ export const createTables = async () => {
         await createUserTable();
         console.log("Users table ready");
 
-        await createProductsTable(); // ✅ FIXED (plural)
+        await createProductsTable(); 
         console.log("Products table ready");
 
         await createProductReviewsTable();
