@@ -181,6 +181,7 @@ export const resetPassword = catchAsync(async (req, res, next) => {
     sendToken(updatedUser.rows[0], 200, res, "Password reset successfully");
 });
 
+
 export const updatePassword = catchAsync(async (req, res, next) => {
     const { currentPassword, newPassword, confirmNewPassword } = req.body;
 

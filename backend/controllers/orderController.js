@@ -202,8 +202,8 @@ export const placeNewOrder = catchAsyncErrors(async (req, res, next) => {
 });
 
 
-    // Fetching Single Orders
-    export const fetchSingleOrder = catchAsyncErrors(async (req, res, next) => {
+// Fetching Single Orders
+export const fetchSingleOrder = catchAsyncErrors(async (req, res, next) => {
         const { orderId} = req.params;
         const result = await database.query(`
             SELECT o.*, 
@@ -239,11 +239,11 @@ export const placeNewOrder = catchAsyncErrors(async (req, res, next) => {
             message: "Orders fetched.",
             orders: result.rows[0],
         });
-    });
+});
 
 
-    //Fetch My Order
-    export const fetchMyOrders = catchAsyncErrors(async(req, res, next) => {
+//Fetch My Order
+export const fetchMyOrders = catchAsyncErrors(async(req, res, next) => {
         const result = await database.query(`
             SELECT o.*, COALESCE(
             json_agg(
@@ -279,11 +279,11 @@ export const placeNewOrder = catchAsyncErrors(async (req, res, next) => {
                 message: "All your orders are fetched.",
                 myOrders: result.rows,
             })
-    });
+});
 
 
-    //Fetch All Orders
-    export const fetchAllOrders = catchAsyncErrors(
+//Fetch All Orders
+export const fetchAllOrders = catchAsyncErrors(
     async (req, res, next) => {
 
         const result = await database.query(
@@ -336,8 +336,8 @@ export const placeNewOrder = catchAsyncErrors(async (req, res, next) => {
     }
 );
 
-        // Update Orders
-        export const updateOrderStatus = catchAsyncErrors(async (req, res, next) => {
+// Update Orders
+export const updateOrderStatus = catchAsyncErrors(async (req, res, next) => {
             const { status } = req.body;
                     
             if (!status) {
@@ -367,10 +367,11 @@ export const placeNewOrder = catchAsyncErrors(async (req, res, next) => {
                    message: "Order status Updated Successfully",
                    updatedOrder: updatedOrder.rows[0],
                 });
-        });       
+});       
 
-        //Delete Orders
-        export const deleteOrder = catchAsyncErrors(async (req, res, next) => {
+
+//Delete Orders
+export const deleteOrder = catchAsyncErrors(async (req, res, next) => {
             const {orderId} = req.params;
             const results = await database.query(`
                 DELETE FROM orders WHERE id = $1 RETURNING * 
@@ -387,5 +388,5 @@ export const placeNewOrder = catchAsyncErrors(async (req, res, next) => {
                 order: results.rows[0],
 
                 })
-            });
+});
        

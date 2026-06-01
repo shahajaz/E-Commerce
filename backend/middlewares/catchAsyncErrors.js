@@ -1,5 +1,7 @@
-const catchAsync = (handler) => (req, res, next) => {
-    Promise.resolve(handler(req, res, next)).catch(next);
+const catchAsync = (theFunction) => {
+    return (req, res, next) => {
+        Promise.resolve(theFunction(req, res, next)).catch(next);
+    };
 };
 
 export default catchAsync;
