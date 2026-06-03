@@ -30,12 +30,12 @@ const Footer = () => {
     ],
   };
 
-  const socialLinks = [
-    { icon: FaFacebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Youtube, href: "#", label: "YouTube" },
-  ];
+    const socialLinks = [
+  { icon: FaFacebook, href: "#", label: "Facebook" },
+  { icon: FaTwitter, href: "#", label: "Twitter" },
+  { icon: FaInstagram, href: "#", label: "Instagram" },
+  { icon: FaYoutube, href: "#", label: "YouTube" },
+];
 
   return (
     <footer className="glass border-t border-[hsla(var(--glass-border))] mt-16">
