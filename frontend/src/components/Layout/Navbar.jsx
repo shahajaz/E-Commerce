@@ -19,7 +19,6 @@ const Navbar = () => {
   }
 
   return <>
-
   <nav className="fixed left-0 w-full top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
     <div className="max-w-7xl max-auto px-4">
       <div className="flex items-center justify-between h-16">
@@ -32,7 +31,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex-1 flex items-center">
           <img src={logo} alt="ShopSphere" className="w-20 h-20"/>
-          <h1 className="text-2xl ml-2 font-bold text-primary">Shop<span className="text-2xl text-orange-500">Sphere</span></h1>
+          <h1 className="text-2xl ml-2 font-bold text-primary">Shop<span className="text-2xl text-orange-600">Sphere</span></h1>
         </div>
 
         {/* Right Icons */}
@@ -46,7 +45,7 @@ const Navbar = () => {
             onClick={() => dispatch(toggleSearchBAR())}
             className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer"
           >
-            <Search className="w-5 h-5 text-white hover:text-orange-700" />
+            <Search className="w-5 h-5 text-black hover:text-orange-700" />
           </button>
 
 
@@ -55,7 +54,7 @@ const Navbar = () => {
             onClick={() => dispatch(toggleAuthPopup())}
             className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer"
           >
-            <User className="w-5 h-5 text-white hover:text-orange-700" />
+            <User className="w-5 h-5 text-black hover:text-orange-700" />
           </button>
 
           {/* Cart */}
@@ -63,7 +62,7 @@ const Navbar = () => {
             onClick={() => dispatch(toggleCart())}
             className="relative p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer"
           >
-            <ShoppingCart className="w-5 h-5 text-white hover:text-orange-700"/>
+            <ShoppingCart className="w-5 h-5 text-black hover:text-orange-700"/>
 
             {
               cartItemCount > 0 && (
@@ -73,10 +72,6 @@ const Navbar = () => {
           </button>
 
         </div>
-
-
-
-
       </div>
     </div>
   </nav>

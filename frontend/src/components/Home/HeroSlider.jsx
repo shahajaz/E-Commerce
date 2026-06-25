@@ -74,8 +74,7 @@ const HeroSlider = () => {
             </p>
             <Link
               to={slide.url}
-              className="px-8 py-4 gradient-primary text-primary-foreground rounded-lg hover:glow-on-hover animate-smooth font-semibold text-lg"
-            >
+              className="px-8 py-4 gradient-primary text-primary-foreground rounded-lg hover:glow-on-hover animate-smooth font-semibold text-lg">
               {slide.cta}
             </Link>
           </div>
@@ -85,14 +84,12 @@ const HeroSlider = () => {
       {/* Arrows */}
       <button
         onClick={prevSlide}
-        className="hidden sm:block absolute left-6 top-1/2 transform -translate-y-1/2 p-3 glass-card hover:glow-on-hover animate-smooth"
-      >
+        className="hidden sm:block absolute left-6 top-1/2 transform -translate-y-1/2 p-3 glass-card hover:glow-on-hover animate-smooth">
         <ChevronLeft className="w-6 h-6 text-primary" />
       </button>
       <button
         onClick={nextSlide}
-        className="hidden sm:block absolute right-6 top-1/2 transform -translate-y-1/2 p-3 glass-card hover:glow-on-hover animate-smooth"
-      >
+        className="hidden sm:block absolute right-6 top-1/2 transform -translate-y-1/2 p-3 glass-card hover:glow-on-hover animate-smooth">
         <ChevronRight className="w-6 h-6 text-primary" />
       </button>
 
