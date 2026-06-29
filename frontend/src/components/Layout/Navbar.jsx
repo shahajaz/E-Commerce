@@ -21,9 +21,9 @@ export default function Navbar() {
   const navItems = [
     { name: "Home", id: "home" },
     { name: "Shop", id: "shop" },
-    { name: "Skills", id: "skills" },
-    { name: "Projects", id: "projects" },
-    { name: "Experience", id: "experience" },
+    { name: "Brands", id: "brands" },
+    { name: "Latest", id: "latest" },
+    { name: "Contact", id: "contact" },
   ];
 
   // ✅ SCROLL SPY (AUTO ACTIVE SECTION)
@@ -64,7 +64,7 @@ export default function Navbar() {
         </a>
 
         {/* DESKTOP NAV */}
-        <div className="hidden lg:flex items-center bg-orange-500 px-4 py-2 rounded-full gap-2 border border-orange-600">
+        <div className="hidden lg:flex items-center bg-orange-600 px-4 py-2 rounded-full gap-2 border border-orange-600">
           {navItems.map((item) => (
             <a
               key={item.id}
@@ -83,8 +83,7 @@ export default function Navbar() {
                 <motion.div
                   layoutId="active-pill"
                   className="absolute inset-0 rounded-full bg-white border-2 border-yellow-400 z-0"
-                  transition={{ type: "spring", stiffness: 300, damping: 25}}
-                />
+                  transition={{ type: "spring", stiffness: 300, damping: 25}}/>
               )}
 
               <span className="relative z-10 text-black">
@@ -97,10 +96,6 @@ export default function Navbar() {
 
         {/* Right Icons */}
          <div className="flex items-center space-x-4">
-           <button onClick={toggleTheme} className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer">
-             {theme === "dark" ? <Sun className="w-5 h-5 text-foreground"/> : <Moon className="w-5 h-5 text-foreground"/>}
-           </button>
-
            {/* Search Overlay */}
            <button
              onClick={() => dispatch(toggleSearchBAR())}
@@ -109,6 +104,10 @@ export default function Navbar() {
              <Search className="w-5 h-5 text-white hover:text-orange-700" />
            </button>
 
+           {/* Theme Toggle */}
+           <button onClick={toggleTheme} className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer">
+             {theme === "dark" ? <Sun className="w-5 h-5 text-foreground"/> : <Moon className="w-5 h-5 text-foreground"/>}
+           </button>
 
            {/* User Profile */}
            <button
