@@ -129,9 +129,6 @@ export default function Navbar() {
               )
              }
            </button>
-
-
-
         </div>
 
 
@@ -140,9 +137,7 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen(true)}
             className="flex items-center justify-center w-10 h-10 text-white text-2xl 
-            rounded-full bg-black border-2 border-white/20
-            transition-all duration-300 hover:bg-white/10"
-          >
+            rounded-full bg-black border-2 border-white/20 cursor-pointer">
             <TiThMenu />
           </button>
         </div>
