@@ -64,6 +64,46 @@ export const forgotPassword = createAsyncThunk("auth/forgot/password", async(ema
   }
 });
 
+export const resetPassword = createAsyncThunk("auth/password/reset", async({ token, password, confirmPassword }, thunkAPI) => {
+  try{
+    const res = await axiosInstance.put(`/auth/password/reset/${token}`, { password, confirmPassword });
+    toast.success(res.data.message);
+    return res.data.user;
+  }
+  catch (error){
+    toast.error(error.response.data.message || "Something went wrong");
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});
+
+
+export const updatePassword = createAsyncThunk("auth/password/update", async({ token, password, confirmPassword }, thunkAPI) => {
+  try{
+    const res = await axiosInstance.put(`/auth/password/update/`, data);
+    toast.success(res.data.message);
+    return res.data.user;
+  }
+  catch (error){
+    const message = error.response.data.message;
+    toast.error(message);
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});
+
+
+export const updateProfile = createAsyncThunk("auth/me/update", async({ token, password, confirmPassword }, thunkAPI) => {
+  try{
+    const res = await axiosInstance.put(`/auth/profile/update/`, data);
+    toast.success(res.data.message);
+    return res.data.user;
+  }
+  catch (error){
+    const message = error.response.data.message;
+    toast.error(message);
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});
+
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -75,7 +115,12 @@ const authSlice = createSlice({
     isRequestingForToken: false,
     isCheckingAuth: true,
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder
+    .addCase(register.pending, (state) => {})
+    .addCase(register.fulfilled, (state) => {})
+    .addCase(register.rejected, (state) => {})
+  },
 });
 
 export default authSlice.reducer;
