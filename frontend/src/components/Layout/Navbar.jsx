@@ -95,40 +95,45 @@ export default function Navbar() {
         </div>
 
         {/* Right Icons */}
-         <div className="flex items-center space-x-4">
-           {/* Search Overlay */}
-           <button
-             onClick={() => dispatch(toggleSearchBAR())}
-             className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer"
-           >
-             <Search className="w-5 h-5 text-white hover:text-orange-700" />
-           </button>
-
-           {/* Theme Toggle */}
-           <button onClick={toggleTheme} className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer">
-             {theme === "dark" ? <Sun className="w-5 h-5 text-foreground"/> : <Moon className="w-5 h-5 text-foreground"/>}
-           </button>
-
-           {/* User Profile */}
-           <button
-             onClick={() => dispatch(toggleAuthPopup())}
-             className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer">
-             <User className="w-5 h-5 text-white hover:text-orange-700" />
-           </button>
-
-           {/* Cart */}
-           <button
-             onClick={() => dispatch(toggleCart())}
-             className="relative p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer"
-           >
-             <ShoppingCart className="w-5 h-5 text-white hover:text-orange-700"/>
-
-             {
-               cartItemCount > 0 && (
-                 <span className="-top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 justify-center"></span>
-              )
-             }
-           </button>
+        <div className="hidden md:flex items-center space-x-4">
+          
+          {/* Search Overlay */}
+          <button
+            onClick={() => dispatch(toggleSearchBAR())}
+            className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer">
+            <Search className="w-5 h-5 text-white hover:text-orange-700" />
+          </button>
+          
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer">
+              {theme === "dark" ? (
+                <Sun className="w-5 h-5 text-foreground" />
+              ) : (
+              <Moon className="w-5 h-5 text-foreground" />
+              )}
+          </button>
+          
+          {/* User Profile */}
+          <button
+            onClick={() => dispatch(toggleAuthPopup())}
+            className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer">
+              <User className="w-5 h-5 text-white hover:text-orange-700" />
+          </button>
+          
+          {/* Cart */}
+          <button
+            onClick={() => dispatch(toggleCart())}
+            className="relative p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer">
+              <ShoppingCart className="w-5 h-5 text-white hover:text-orange-700" />
+              
+              {cartItemCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartItemCount}
+                </span>
+              )}
+          </button>
         </div>
 
 

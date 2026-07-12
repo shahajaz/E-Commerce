@@ -1,40 +1,67 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import banner1 from "../../assets/banner1.jpg";
+import banner2 from "../../assets/banner2.jpg";
+import banner3 from "../../assets/banner3.jpg";
+import banner4 from "../../assets/banner4.jpg";
+import banner5 from "../../assets/banner5.jpg";
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    {
-      id: 1,
-      title: "Premium Electronics",
-      subtitle: "Discover the latest tech innovations",
-      description:
-        "Up to 50% off on premium headphones, smartwatches, and more",
-      image: "./banner1.jpg",
-      cta: "Shop Electronics",
-      url: "/products?category=Electronics",
-    },
-    {
-      id: 2,
-      title: "Fashion Forward",
-      subtitle: "Style meets comfort",
-      description: "New arrivals in designer clothing and accessories",
-      image: "./banner2.jpg",
-      cta: "Explore Fashion",
-      url: "/products?category=Fashion",
-    },
-    {
-      id: 3,
-      title: "Home & Garden",
-      subtitle: "Transform your space",
-      description: "Beautiful furniture and decor for every home",
-      image: "./banner3.jpg",
-      cta: "Shop Home",
-      url: `/products?category=Home & Garden`,
-    },
-  ];
+  {
+    id: 1,
+    title: "Premium Electronics",
+    subtitle: "Discover the latest tech innovations",
+    description:
+      "Up to 50% off on premium headphones, smartwatches, and more",
+    image: banner1,
+    cta: "Shop Electronics",
+    url: "/products?category=Electronics",
+  },
+  {
+    id: 2,
+    title: "Fashion Forward",
+    subtitle: "Style Meets Comfort",
+    description:
+      "Explore the latest trends in fashion and accessories.",
+    image: banner2,
+    cta: "Explore Fashion",
+    url: "/products?category=Fashion",
+  },
+  {
+    id: 3,
+    title: "Home & Garden",
+    subtitle: "Transform Your Space",
+    description:
+      "Beautiful furniture and decor for every home.",
+    image: banner3,
+    cta: "Shop Home",
+    url: "/products?category=Home & Garden",
+  },
+  {
+    id: 4,
+    title: "Luxury Collection",
+    subtitle: "Premium Lifestyle",
+    description:
+      "Exclusive products with unbeatable quality.",
+    image: banner4,
+    cta: "View Collection",
+    url: "/products",
+  },
+  {
+    id: 5,
+    title: "Mega Sale",
+    subtitle: "Limited Time Offer",
+    description:
+      "Flat 60% OFF on selected products.",
+    image: banner5,
+    cta: "Shop Now",
+    url: "/products",
+  },
+];
 
   useEffect(() => {
     const timer = setInterval(() => {
