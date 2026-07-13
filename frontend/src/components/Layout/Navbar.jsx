@@ -53,14 +53,14 @@ export default function Navbar() {
   return (
     <>
       {/* NAVBAR (ALWAYS VISIBLE) */}
-      <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-12 py-4 z-[999] bg-transparent backdrop-blur-lg">
+      <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-12 py-4 z-[999]">
 
         {/* LOGO */}
-        <a href="#home" className="flex items-center gap-1 cursor-pointer">
+        <a href="#home" className="flex items-center cursor-pointer">
           <img
             src={logo} alt="logo"
             className="w-18 h-18 object-contain transition-all duration-300 hover:scale-110"/>
-          <span className="text-2xl font-bold text-black">ShopSphere</span>
+            <span className="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent drop-shadow-sm transition-all duration-300 hover:scale-105">ShopSphere</span>
         </a>
 
         {/* DESKTOP NAV */}
@@ -109,9 +109,9 @@ export default function Navbar() {
             onClick={toggleTheme}
             className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer">
               {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-foreground" />
+                <Sun className="w-5 h-5 text-white" />
               ) : (
-              <Moon className="w-5 h-5 text-foreground" />
+              <Moon className="w-5 h-5 text-white" />
               )}
           </button>
           

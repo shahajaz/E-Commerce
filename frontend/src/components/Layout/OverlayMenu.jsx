@@ -141,8 +141,7 @@ export default function OverlayMenu({
 
           </motion.div>
 
-                    {/* ================= BOTTOM ICONS ================= */}
-
+          {/* ================= BOTTOM ICONS ================= */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
@@ -165,7 +164,7 @@ export default function OverlayMenu({
                 }}
                 className="p-2 rounded-full hover:bg-white/10 transition"
               >
-                <Search className="w-6 h-6 text-white hover:text-orange-500" />
+                <Search className="w-6 h-6 text-white hover:text-orange-600" />
               </button>
 
               {/* Theme */}
@@ -188,7 +187,7 @@ export default function OverlayMenu({
                 }}
                 className="p-2 rounded-full hover:bg-white/10 transition"
               >
-                <User className="w-6 h-6 text-white hover:text-orange-500" />
+                <User className="w-6 h-6 text-white hover:text-orange-600" />
               </button>
 
               {/* Cart */}
@@ -199,7 +198,7 @@ export default function OverlayMenu({
                 }}
                 className="relative p-2 rounded-full hover:bg-white/10 transition"
               >
-                <ShoppingCart className="w-6 h-6 text-white hover:text-orange-500" />
+                <ShoppingCart className="w-6 h-6 text-white hover:text-orange-600" />
 
                 {cartItemCount > 0 && (
                   <span
@@ -207,7 +206,7 @@ export default function OverlayMenu({
                     flex items-center justify-center
                     w-5 h-5
                     rounded-full
-                    bg-orange-500
+                    bg-orange-600
                     text-white
                     text-xs
                     font-semibold"
