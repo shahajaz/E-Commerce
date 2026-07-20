@@ -87,7 +87,8 @@ const HeroSlider = () => {
         <div className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
           style={{ backgroundImage: `url(${slide.image})` }}
         />
-        <div className="absolute inset-0 glass" />
+        {/* <div className="absolute inset-0 glass" /> */}
+        <div className="absolute inset-0 bg-black/25" />
         <div className="relative h-full flex items-center justify-center text-center px-6">
           <div className="max-w-3xl animate-fade-in-up">
             <h3 className="text-lg font-medium text-primary mb-2">

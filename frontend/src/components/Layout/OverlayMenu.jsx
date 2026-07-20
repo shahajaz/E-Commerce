@@ -76,7 +76,6 @@ export default function OverlayMenu({
           </div>
 
           {/* ================= NAVIGATION ================= */}
-
           <motion.div
             className="flex-1 flex flex-col items-center justify-center gap-8"
             initial="hidden"
@@ -162,7 +161,7 @@ export default function OverlayMenu({
                   dispatch(toggleSearchBar());
                   onClose();
                 }}
-                className="p-2 rounded-full hover:bg-white/10 transition"
+                className="p-2 rounded-full hover:bg-white/10 transition cursor-pointer"
               >
                 <Search className="w-6 h-6 text-white hover:text-orange-600" />
               </button>
@@ -170,7 +169,7 @@ export default function OverlayMenu({
               {/* Theme */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-full hover:bg-white/10 transition"
+                className="p-2 rounded-full hover:bg-white/10 transition cursor-pointer"
               >
                 {theme === "dark" ? (
                   <Sun className="w-6 h-6 text-yellow-400" />
@@ -185,7 +184,7 @@ export default function OverlayMenu({
                   dispatch(toggleAuthPopup());
                   onClose();
                 }}
-                className="p-2 rounded-full hover:bg-white/10 transition"
+                className="p-2 rounded-full hover:bg-white/10 transition cursor-pointer"
               >
                 <User className="w-6 h-6 text-white hover:text-orange-600" />
               </button>
@@ -196,7 +195,7 @@ export default function OverlayMenu({
                   dispatch(toggleCart());
                   onClose();
                 }}
-                className="relative p-2 rounded-full hover:bg-white/10 transition"
+                className="relative p-2 rounded-full hover:bg-white/10 transition cursor-pointer"
               >
                 <ShoppingCart className="w-6 h-6 text-white hover:text-orange-600" />
 
