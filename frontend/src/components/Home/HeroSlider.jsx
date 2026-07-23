@@ -81,14 +81,14 @@ const HeroSlider = () => {
   const slide = slides[currentSlide];
 
   return (
-    <div className="relative h-[70vh] overflow-hidden rounded-2xl">
+    <div className="relative h-[100vh] overflow-hidden rounded-xl">
       {/* Single Active Slide */}
       <div className="relative h-full">
-        <div className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
-          style={{ backgroundImage: `url(${slide.image})` }}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
+          style={{backgroundImage: `url(${slide.image})`,}}
         />
-        {/* <div className="absolute inset-0 glass" /> */}
-        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 bg-black/25"/>
         <div className="relative h-full flex items-center justify-center text-center px-6">
           <div className="max-w-3xl animate-fade-in-up">
             <h3 className="text-lg font-medium text-primary mb-2">
@@ -112,13 +112,13 @@ const HeroSlider = () => {
       {/* Arrows */}
       <button
         onClick={prevSlide}
-        className="hidden sm:block absolute left-6 top-1/2 transform -translate-y-1/2 p-3 glass-card hover:glow-on-hover animate-smooth">
-        <ChevronLeft className="w-6 h-6 text-primary" />
+        className="hidden sm:block absolute left-6 top-1/2 transform -translate-y-1/2 p-3 glass-card rounded-full hover:glow-on-hover animate-smooth cursor-pointer">
+        <ChevronLeft className="w-6 h-6 text-primary"/>
       </button>
       <button
         onClick={nextSlide}
-        className="hidden sm:block absolute right-6 top-1/2 transform -translate-y-1/2 p-3 glass-card hover:glow-on-hover animate-smooth">
-        <ChevronRight className="w-6 h-6 text-primary" />
+        className="hidden sm:block absolute right-6 top-1/2 transform -translate-y-1/2 p-3 glass-card rounded-full hover:glow-on-hover animate-smooth cursor-pointer">
+        <ChevronRight className="w-6 h-6 text-primary"/>
       </button>
 
       {/* Dots */}
