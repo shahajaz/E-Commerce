@@ -53,7 +53,13 @@ export default function Navbar() {
   return (
     <>
       {/* NAVBAR (ALWAYS VISIBLE) */}
-      <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-12 py-4 z-[999]">
+      <nav
+  className={`fixed top-0 left-0 w-full flex items-center justify-between px-10 py-2 z-[999] backdrop-blur-md shadow-md transition-all duration-300 ${
+    theme === "dark"
+      ? "bg-slate-900/80 border-b border-slate-700"
+      : "bg-amber-50/80 border-b border-gray-200"
+  }`}
+>
 
         {/* LOGO */}
         <a href="#home" className="flex items-center cursor-pointer">
@@ -99,7 +105,7 @@ export default function Navbar() {
           
           {/* Search Overlay */}
           <button
-            onClick={() => dispatch(toggleSearchBAR())}
+            onClick={() => dispatch(toggleSearchBar())}
             className="p-2 rounded-full bg-black/20 hover:bg-bg-secondary transition-colors cursor-pointer">
             <Search className="w-5 h-5 text-white hover:text-orange-700" />
           </button>
