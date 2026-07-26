@@ -2,18 +2,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import {Search, ShoppingCart, Sun, Moon, User,} from "lucide-react";
 import { MdClose } from "react-icons/md";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useTheme } from "../../contexts/ThemeContext";
 import logo from "../../assets/logo.png";
 import {toggleSearchBar, toggleAuthPopup, toggleCart,} from "../../store/slices/popupSlice";
 
 export default function OverlayMenu({
-  isOpen,
+   isOpen,
   onClose,
-  dispatch,
-  theme,
-  toggleTheme,
-  cartItemCount,
+  cartItemCount = 0,
 }) {
   const [active, setActive] = useState("home");
+  const dispatch = useDispatch();
+  const { theme, toggleTheme } = useTheme();
 
   const navItems = [
     { name: "Home", id: "home" },
@@ -46,33 +47,27 @@ export default function OverlayMenu({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
+
           {/* ================= TOP BAR ================= */}
-
           <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
-
             <div className="flex items-center gap-2">
-
               <img
                 src={logo}
                 alt="logo"
                 className="w-12 h-12 object-contain"/>
-
-              <h1 className="text-3xl font-bold text-white">ShopSphere</h1>
-
+                <span className="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent drop-shadow-sm transition-all duration-300 hover:scale-105">ShopSphere</span>
             </div>
 
             <button
               onClick={onClose}
-              className="w-11 h-11 rounded-full flex items-center justify-center
-              bg-white/5 border border-white/10
-              hover:bg-white/10 transition-all duration-300"
-            >
+              className="w-10 h-10 rounded-full flex items-center justify-center
+              bg-white/5 border border-white/10 
+              transition-all duration-300 cursor-pointer">
               <MdClose
                 className="text-white"
                 size={30}
               />
             </button>
-
           </div>
 
           {/* ================= NAVIGATION ================= */}
@@ -107,21 +102,14 @@ export default function OverlayMenu({
                 transition={{
                   duration: .4,
                 }}
-                className="relative px-10 py-3 rounded-full"
+                className="relative px-10 py-3 rounded-full cursor-pointer"
               >
 
                 {active === item.id && (
                   <motion.div
                     layoutId="mobile-nav"
-                    className="absolute inset-0 rounded-full
-                    bg-gradient-to-r
-                    from-[#ff00af]
-                    to-[#ffcc00]"
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 25,
-                    }}
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 shadow-lg"
+                    transition={{ type: "spring", stiffness: 300, damping: 25,}}
                   />
                 )}
 

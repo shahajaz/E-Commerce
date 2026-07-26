@@ -81,7 +81,7 @@ const HeroSlider = () => {
   const slide = slides[currentSlide];
 
   return (
-    <div className="relative h-[100vh] overflow-hidden">
+    <div className="relative h-screen pt-[80px] overflow-hidden">
       {/* Single Active Slide */}
       <div className="relative h-full">
         <div
