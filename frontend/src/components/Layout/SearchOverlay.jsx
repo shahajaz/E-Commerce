@@ -27,11 +27,13 @@ const SearchOverlay = () => {
           {/* Search icon button */}
           <div className="relative">
             <input type="text" placeholder="Search products..."
-            className="w-full h-12 pl-12 pr-4 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-gray-300 outline-none"/>
+              className="w-full h-12 pl-12 pr-4 rounded-full bg-black border border-gray-800 text-white placeholder:text-gray-400
+              dark:bg-white dark:border-gray-300 dark:text-black dark:placeholder:text-gray-500 outline-none"
+            />
             
             <button type="button" onClick={handleSearch}
-              className="absolute left-3 top-1/2 -translate-y-1/2 p-2 cursor-pointer z-20">
-                <Search className="w-5 h-5 text-white" />
+              className="absolute left-3 top-1/2 -translate-y-1/2 p-2 cursor-pointer z-20"> 
+              <Search className="w-5 h-5 text-white dark:text-black" />
             </button>
           </div>
 
