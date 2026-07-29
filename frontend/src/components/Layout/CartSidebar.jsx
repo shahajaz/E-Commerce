@@ -6,7 +6,10 @@ const CartSidebar = () => {
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
   const { isCartOpen } = useSelector((state) => state.popup);
-  return <></>;
+  return 
+  <>
+  
+  </>;
 };
 
 export default CartSidebar;

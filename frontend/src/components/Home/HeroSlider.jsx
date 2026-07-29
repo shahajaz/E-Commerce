@@ -86,8 +86,7 @@ const HeroSlider = () => {
       <div className="relative h-full">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
-          style={{backgroundImage: `url(${slide.image})`,}}
-        />
+          style={{backgroundImage: `url(${slide.image})`,}}/>
         <div className="absolute inset-0 bg-black/25"/>
         <div className="relative h-full flex items-center justify-center text-center px-6">
           <div className="max-w-3xl animate-fade-in-up">

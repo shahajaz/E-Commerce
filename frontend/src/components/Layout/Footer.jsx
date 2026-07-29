@@ -42,7 +42,8 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div className="lg:col-span-1">
-            <h2 className="text-2xl font-bold gradient-primary bg-clip-text text-transparent mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight leading-tight bg-gradient-to-r
+             from-orange-400 via-orange-500 to-red-600 bg-clip-text text-transparent drop-shadow-lg mb-4">
               ShopSphere
             </h2>
 
@@ -140,14 +141,13 @@ const Footer = () => {
 
           <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 bg-secondary rounded-lg border focus:outline-none"
-            />
+              type="email" placeholder="Enter your email"
+              className=" flex-1 px-5 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white
+              placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"/>
 
             <button
               type="submit"
-              className="px-6 py-3 gradient-primary rounded-lg font-semibold"
+              className="px-6 py-3 gradient-primary rounded-full font-semibold bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 hover:opacity-90 cursor-pointer"
             >
               Subscribe
             </button>
@@ -155,17 +155,17 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-[hsla(var(--glass-border))]">
-          <div className="flex items-center space-x-4 mb-4 md:mb-0">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
-                className="p-2 glass-card"
-              >
-                <social.icon className="w-5 h-5 text-primary" />
-              </a>
-            ))}
+          <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-[hsla(var(--glass-border))]">
+            <div className="flex items-center space-x-4 mb-4 md:mb-0">
+              {socialLinks.map((social) => (
+                <a key={social.label} href={social.href} aria-label={social.label}
+                  className="p-3 rounded-full glass-card transition-all duration-300 hover:bg-gradient-to-r
+                hover:from-orange-400 hover:via-orange-500 hover:to-red-500 hover:scale-110 hover:shadow-lg"
+                >
+                  <social.icon className="w-5 h-5 text-primary hover:text-white transition-colors duration-300" />
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="text-center md:text-right">
@@ -174,7 +174,8 @@ const Footer = () => {
             </p>
 
             <p className="text-muted-foreground text-xs mt-1">
-              Design & Developed By TechGuy 360
+              Design & Developed By{" "}
+              <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent font-semibold">TechGuy 360</span>
             </p>
           </div>
         </div>

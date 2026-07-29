@@ -53,20 +53,17 @@ export default function Navbar() {
   return (
     <>
       {/* NAVBAR (ALWAYS VISIBLE) */}
-      <nav
-  className={`fixed top-0 left-0 w-full flex items-center justify-between px-10 py-2 z-[999] backdrop-blur-md shadow-md transition-all duration-300 ${
-    theme === "dark"
-      ? "bg-slate-900/80 border-b border-slate-700"
-      : "bg-amber-50/80 border-b border-gray-200"
-  }`}
->
+      <nav className={`fixed top-0 left-0 w-full flex items-center justify-between px-10 py-2 z-[999] backdrop-blur-md shadow-md transition-all duration-300 ${
+        theme === "dark" ? "bg-slate-900/80 border-b border-slate-700"
+        : "bg-amber-50/80 border-b border-gray-200"
+        }`}>
 
         {/* LOGO */}
         <a href="#home" className="flex items-center cursor-pointer">
           <img
             src={logo} alt="logo"
             className="w-18 h-18 object-contain transition-all duration-300 hover:scale-110"/>
-            <span className="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent drop-shadow-sm transition-all duration-300 hover:scale-105">ShopSphere</span>
+            <span className="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent drop-shadow-sm transition-all duration-300 hover:scale-105"></span>
         </a>
 
         {/* DESKTOP NAV */}

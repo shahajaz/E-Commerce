@@ -42,7 +42,7 @@ export default function OverlayMenu({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-xl flex flex-col"
+          className="fixed inset-0 z-[9999] bg-black/15 backdrop-blur-xl flex flex-col"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -55,7 +55,7 @@ export default function OverlayMenu({
                 src={logo}
                 alt="logo"
                 className="w-12 h-12 object-contain"/>
-                <span className="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent drop-shadow-sm transition-all duration-300 hover:scale-105">ShopSphere</span>
+                <span className="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent drop-shadow-sm transition-all duration-300 hover:scale-105"></span>
             </div>
 
             <button
@@ -191,12 +191,7 @@ export default function OverlayMenu({
                   <span
                     className="absolute -top-1 -right-1
                     flex items-center justify-center
-                    w-5 h-5
-                    rounded-full
-                    bg-orange-600
-                    text-white
-                    text-xs
-                    font-semibold"
+                    w-5 h-5 rounded-full bg-orange-600 text-white text-xs font-semibold"
                   >
                     {cartItemCount}
                   </span>
