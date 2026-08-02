@@ -2,6 +2,9 @@ import { X, Plus, Minus, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import { removeFromCart, updateCartQuantity } from "../../redux/cartSlice";
+import { closeCart } from "../../redux/popupSlice";
+
 const CartSidebar = () => {
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
@@ -15,10 +18,11 @@ const CartSidebar = () => {
     }
   };
 
-  let totalPrice = 0;
-  if (cart) {
-    total = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-  }
+  const totalPrice =
+  cart?.reduce(
+    (sum, item) => sum + item.product.price * item.quantity,
+    0
+  ) || 0;
 
   if (!isCartOpen) {
     return null;
@@ -61,11 +65,33 @@ const CartSidebar = () => {
             return (
               <div key={item.product.id} className="glass-card p-4">
                 <div className="flex items-center space-x-4">
-                  <img src={item.product.images[0].url} alt={item.product.name} className="w-16 h-16 object-cover rounded-lg"/>
+                  <img src={item.product.images?.[0]?.url || "/placeholder.png"} alt={item.product.name}
+                    className="w-16 h-16 object-cover rounded-lg"
+                  />
 
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-foreground truncate">{item.product.name}</h3>
                     <p className="text-primary font-semibold">${item.product.price}</p>
+                  </div>
+
+                  {/* Quantity Controls */}
+                  <div className="flex items-center space-x-3 mt-2">
+                    <button className="p-1 rounded glass-card hover:glow-on-hover animate-smooth"
+                      onClick={() => updateQuantity(item.product.id, item.quantity - 1)}>
+                      <Minus className="w-4 h-4 text-primary"></Minus>
+                    </button>
+                    
+                    <span className="w-8 text-center font-semibold">{item.quantity}</span>
+                    
+                    <button className="p-1 rounded glass-card hover:glow-on-hover animate-smooth"
+                      onClick={() => updateQuantity(item.product.id, item.quantity + 1)}>
+                      <Plus className="w-4 h-4 text-primary"></Plus>
+                    </button>
+
+                    <button className="p-1 rounded glass-card hover:glow-on-hover animate-smooth ml-2 text-destructive"
+                      onClick={() => dispatch(removeFromCart(item.product.id))}>
+                      <Trash2 className="w-4 h-4 text-destructive-foreground"/>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -77,6 +103,18 @@ const CartSidebar = () => {
         )}
       </div>
 
+      {/* Total */}
+      <div className="border-t border-[hsla(var(--border))] p-4">
+        <div className="flex justify-between items-center mb-4">
+          <span className="text-lg font-semibold">Total:</span>
+          <span className="text-xl font-bold text-primary">${totalPrice.toFixed(2)}</span>
+        </div>
+
+        <Link to="/cart" onClick={() => dispatch(closeCart())}
+          className="w-full block text-center py-3 gradient-primary gradient-primary-foreground rounded-lg hover:glow-on-hover animate-smooth font-semibold"
+        >Proceed to Checkout
+        </Link>
+      </div>
     </div>
   </>
 );
