@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useTheme } from "../../contexts/ThemeContext";
 import logo from "../../assets/logo.png";
+import { openCart } from "../../store/slices/popupSlice";
 import {toggleSearchBar, toggleAuthPopup, toggleCart,} from "../../store/slices/popupSlice";
 
 export default function OverlayMenu({
@@ -24,19 +25,24 @@ export default function OverlayMenu({
     { name: "Contact", id: "contact" },
   ];
 
-  const handleClick = (id) => {
-    setActive(id);
+  // const handleClick = (id) => {
+  //   setActive(id);
 
-    const section = document.getElementById(id);
+  //   const section = document.getElementById(id);
 
-    onClose();
+  //   onClose();
 
-    setTimeout(() => {
-      section?.scrollIntoView({
-        behavior: "smooth",
-      });
-    }, 250);
-  };
+  //   setTimeout(() => {
+  //     section?.scrollIntoView({
+  //       behavior: "smooth",
+  //     });
+  //   }, 250);
+  // };
+
+  onClick={() => {
+  console.log("Cart clicked");
+  dispatch(openCart());
+}}
 
   return (
     <AnimatePresence>
@@ -178,7 +184,32 @@ export default function OverlayMenu({
               </button>
 
               {/* Cart */}
-              <button
+              {/* Cart */}
+<button
+  onClick={() => {
+    onClose();
+
+    setTimeout(() => {
+      dispatch(openCart());
+    }, 250);
+  }}
+  className="relative p-2 rounded-full hover:bg-white/10 transition cursor-pointer"
+>
+  <ShoppingCart className="w-6 h-6 text-white hover:text-orange-600" />
+
+  {cartItemCount > 0 && (
+    <span
+      className="absolute -top-1 -right-1
+      flex items-center justify-center
+      w-5 h-5 rounded-full bg-orange-600 text-white text-xs font-semibold"
+    >
+      {cartItemCount}
+    </span>
+  )}
+</button>
+
+
+              {/* <button
                 onClick={() => {
                   dispatch(toggleCart());
                   onClose();
@@ -196,7 +227,7 @@ export default function OverlayMenu({
                     {cartItemCount}
                   </span>
                 )}
-              </button>
+              </button> */}
             </div>
           </motion.div>
         </motion.div>

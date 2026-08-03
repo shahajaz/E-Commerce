@@ -2,8 +2,12 @@ import { X, Plus, Minus, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { removeFromCart, updateCartQuantity } from "../../redux/cartSlice";
-import { closeCart } from "../../redux/popupSlice";
+import {
+  removeFromCart,
+  updateCartQuantity,
+} from "../../store/slices/cartSlice";
+
+import { closeCart } from "../../store/slices/popupSlice";
 
 const CartSidebar = () => {
   const dispatch = useDispatch();
@@ -37,7 +41,7 @@ const CartSidebar = () => {
     ></div>
 
     {/* Sidebar */}
-    <div className="fixed top-0 right-0 h-full w-96 bg-white shadow-lg z-50 animate-slide-in-right overflow-auto">
+    <div className="fixed top-0 right-0 h-full w-96 bg-white text-black dark:bg-black dark:text-white border-l border-gray-200 dark:border-gray-700 shadow-lg z-50 animate-slide-in-right overflow-auto transition-colors duration-300">
       
       {/* Header */}
       <div className="flex justify-between items-center p-4 border-b">
@@ -111,7 +115,7 @@ const CartSidebar = () => {
         </div>
 
         <Link to="/cart" onClick={() => dispatch(closeCart())}
-          className="w-full block text-center py-3 gradient-primary gradient-primary-foreground rounded-lg hover:glow-on-hover animate-smooth font-semibold"
+          className="w-full block text-center py-3 gradient-primary gradient-primary-foreground rounded-full hover:glow-on-hover animate-smooth font-semibold"
         >Proceed to Checkout
         </Link>
       </div>
