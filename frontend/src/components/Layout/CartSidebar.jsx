@@ -28,10 +28,6 @@ const CartSidebar = () => {
     0
   ) || 0;
 
-  if (!isCartOpen) {
-    return null;
-  }
-
   return (
   <>
     {/* Overlay */}
@@ -41,7 +37,7 @@ const CartSidebar = () => {
     ></div>
 
     {/* Sidebar */}
-    <div className="fixed top-0 right-0 h-full w-96 bg-white text-black dark:bg-black dark:text-white border-l border-gray-200 dark:border-gray-700 shadow-lg z-50 animate-slide-in-right overflow-auto transition-colors duration-300">
+    <div className="fixed top-0 right-0 h-screen w-full sm:w-96 bg-white text-black dark:bg-black dark:text-white border-l border-gray-200 dark:border-gray-700 shadow-lg z-[10001] overflow-y-auto transition-colors duration-300">
       
       {/* Header */}
       <div className="flex justify-between items-center p-4 border-b">

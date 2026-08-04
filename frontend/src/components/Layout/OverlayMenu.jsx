@@ -25,24 +25,21 @@ export default function OverlayMenu({
     { name: "Contact", id: "contact" },
   ];
 
-  // const handleClick = (id) => {
-  //   setActive(id);
+  const handleClick = (id) => {
+  setActive(id);
 
-  //   const section = document.getElementById(id);
+  const section = document.getElementById(id);
 
-  //   onClose();
+  onClose();
 
-  //   setTimeout(() => {
-  //     section?.scrollIntoView({
-  //       behavior: "smooth",
-  //     });
-  //   }, 250);
-  // };
+  setTimeout(() => {
+  section?.scrollIntoView({
+  behavior: "smooth",
+       });
+     }, 250);
+   };
 
-  onClick={() => {
-  console.log("Cart clicked");
-  dispatch(openCart());
-}}
+
 
   return (
     <AnimatePresence>
@@ -108,8 +105,7 @@ export default function OverlayMenu({
                 transition={{
                   duration: .4,
                 }}
-                className="relative px-10 py-3 rounded-full cursor-pointer"
-              >
+                className="relative px-10 py-3 rounded-full cursor-pointer">
 
                 {active === item.id && (
                   <motion.div
@@ -131,7 +127,6 @@ export default function OverlayMenu({
 
               </motion.button>
             ))}
-
           </motion.div>
 
           {/* ================= BOTTOM ICONS ================= */}
@@ -184,50 +179,21 @@ export default function OverlayMenu({
               </button>
 
               {/* Cart */}
-              {/* Cart */}
-<button
-  onClick={() => {
-    onClose();
-
-    setTimeout(() => {
-      dispatch(openCart());
-    }, 250);
-  }}
-  className="relative p-2 rounded-full hover:bg-white/10 transition cursor-pointer"
->
-  <ShoppingCart className="w-6 h-6 text-white hover:text-orange-600" />
-
-  {cartItemCount > 0 && (
-    <span
-      className="absolute -top-1 -right-1
-      flex items-center justify-center
-      w-5 h-5 rounded-full bg-orange-600 text-white text-xs font-semibold"
-    >
-      {cartItemCount}
-    </span>
-  )}
-</button>
-
-
-              {/* <button
-                onClick={() => {
-                  dispatch(toggleCart());
+              <button onClick={() => {
+                dispatch(openCart());
+                requestAnimationFrame(() => {
                   onClose();
-                }}
-                className="relative p-2 rounded-full hover:bg-white/10 transition cursor-pointer"
-              >
+                });
+              }}
+              className="relative p-2 rounded-full hover:bg-white/10 transition cursor-pointer">
                 <ShoppingCart className="w-6 h-6 text-white hover:text-orange-600" />
-
                 {cartItemCount > 0 && (
-                  <span
-                    className="absolute -top-1 -right-1
-                    flex items-center justify-center
-                    w-5 h-5 rounded-full bg-orange-600 text-white text-xs font-semibold"
-                  >
+                  <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 rounded-full bg-orange-600 text-white text-xs font-semibold">
                     {cartItemCount}
                   </span>
                 )}
-              </button> */}
+              </button>
+
             </div>
           </motion.div>
         </motion.div>
