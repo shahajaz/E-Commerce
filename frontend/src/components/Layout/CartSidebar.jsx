@@ -37,14 +37,15 @@ const CartSidebar = () => {
     ></div>
 
     {/* Sidebar */}
-    <div className="fixed top-0 right-0 h-screen w-full sm:w-96 bg-white text-black dark:bg-black dark:text-white border-l border-gray-200 dark:border-gray-700 shadow-lg z-[10001] overflow-y-auto transition-colors duration-300">
+    <div className="fixed top-0 right-0 h-screen w-full sm:w-96 bg-[hsl(var(--primary)/0.2)] text-black dark:text-white border-l border-gray-200 dark:border-gray-700 shadow-lg z-[10001] overflow-y-auto transition-colors duration-300">
       
       {/* Header */}
       <div className="flex justify-between items-center p-4 border-b">
         <h2 className="text-xl font-semibold">Shopping Cart</h2>
 
-        <button onClick={() => dispatch(closeCart())}>
-          <X size={24} />
+        <button onClick={() => dispatch(closeCart())} aria-label="Close cart" 
+          className="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 cursor-pointer transition-all duration-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"> 
+          <X className="w-5 h-5"/>
         </button>
       </div>
 
