@@ -21,6 +21,7 @@ const ProfilePanel = () => {
     }
   }, [authUser]);
 
+  const [showPassword, setShowPassword] = useState(false);
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
@@ -76,9 +77,8 @@ const ProfilePanel = () => {
       </div>
 
       {/* Profile Update Form */}
-      {
-        authUser && (
-          <div className="space-y-4 mb-8">
+      {authUser && (
+        <div className="space-y-4 mb-8">
             <h3 className="text-lg font-semibold text-primary">Update Profile</h3>
 
             <input type="text" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)}
@@ -99,15 +99,59 @@ const ProfilePanel = () => {
                   <div className={`w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin`}></div>
                   <span>Updating Profile...</span>
                 </>
-                ) : ("")
+                ) : ("Save Changes")
               }
             </button>
-          </div>  
-        )
-      }
+        </div>  
+      )}
     </div>
 
-    
+    {/* Password Update Form */}
+    <div className="space-y-4 mb-8">
+      <h3 className="text-lg font-semibold text-primary">Update Password</h3>
+      
+      <input type={showPassword ? "text" : "password"} placeholder="Current Password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)}
+        className="w-full p-2 rounded  border border-border bg-secondary text-foreground"
+      />
+        <input type={showPassword ? "text" : "password"} placeholder="New Password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)}
+          className="w-full p-2 rounded  border border-border bg-secondary text-foreground"
+        />
+
+        <input type={showPassword ? "text" : "password"} placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}
+          className="w-full p-2 rounded  border border-border bg-secondary text-foreground"
+        />
+
+        <button onClick={()=> setShowPassword(!showPassword)}
+          className="text-xs text-muted-foreground flex items-center gap-1">
+            {
+              showPassword ? (
+                <EyeOff className="w-4 h-4 text-primary"/>
+              ) : 
+              
+              (<Eye className="w-4 h-4 text-primary"/>)
+            }
+
+            {showPassword ? "Hide Password" : "Show Password"}
+            Passwords
+        </button>
+
+        <button onClick={handleProfileUpdate} className="flex justify-center items-center space-x-3 p-3 rounded-lg glass-card hover:glow-on-hover animate-smooth group w-full">
+          {isUpdatingPassword ? (
+            <>
+              <div className={`w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin`}></div>
+              <span>Updating Password...</span>
+            </>
+            ) : ("Update Password")
+          }
+        </button>
+    </div>  
+
+    <button onClick={handleLogout} 
+      className="my-6 flex item-center space-x-3 p-3 rounded-lg glass-card
+      hover:glow-on-hover text-destructive hover:text-destructive-foreground group w-full">
+        <LogOut className="w-5 h-5"/>
+        <span>Logout</span>
+    </button>
 
   </div>
   </>;
