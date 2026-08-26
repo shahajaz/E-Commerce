@@ -61,13 +61,89 @@ const LoginModal = () => {
     }
   };
 
-  if(!AuthPopupOpen || authUser) return null;
+  if(!isAuthPopupOpen || authUser) return null;
 
   let idLoading = isSigningUp || isLoggingIn || isRequestingForToken;
 
   return <>
   <div className="fixed inset-0 z-50 flex items-center justify-center">
+
+    {/* Overlay */}
     <div className="absolute inset-0 backdrop-blur-md bg-[hsla(var(--glass-bg))]"/>
+    <div className="relative z-10 glass-panel max-w-md mx-4 animate-fade-in-up">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl font-bold text-center text-primary">
+          {
+            mode === "reset" 
+            ? "Reset Password" 
+            : mode === "signup" 
+            ? "Create Account" 
+            : mode === "forgot" 
+            ? "Forgot Password" 
+            : "Welcome Back"
+          }
+        </h2>
+
+        <button
+          className="p-2 text-gray-500 rounded-full hover:bg-gray-200 animate-smooth"
+          onClick={() => dispatch(toggleAuthPopup())}
+        >
+          <X className="w-5 h-5 text-primary"/>
+        </button>
+      </div>
+
+      {/*Authentication Form */}
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Full Name - Only for signup */}
+        {mode === "signup" && (
+          <div className="relative">
+            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground"/>
+              <input
+                type="text" placeholder="Full Name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} 
+                className="w-full pl-10 pr-4 py-3 bg-secondary border border-border rounded-full focus:outline-none"required
+            />
+          </div>
+        )}
+
+        {/* Email */}
+        {mode !== "reset" && (
+          <div className="relative">
+            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground"/>
+              <input
+                type="email" placeholder="Email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} 
+                className="w-full pl-10 pr-4 py-3 bg-secondary border border-border rounded-full focus:outline-none"required
+            />
+          </div>
+        )}
+
+        {/* Password - Always visible except forgot mode */}
+        {mode === "forgot" && (
+          <div className="relative">
+            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground"/>
+              <input
+                type="password" placeholder="Password" value={formData.password} onChange={(e) => setFormData({...formData, password: e.target.value})} 
+                className="w-full pl-10 pr-4 py-3 bg-secondary border border-border rounded-full focus:outline-none"required
+            />
+          </div>
+        )}
+
+        {/* Confirm Password - Only visible for reset mode */}
+        {mode === "reset" && (
+          <div className="relative">
+            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground"/>
+              <input
+                type="password" placeholder="Confirm Password" value={formData.confirmPassword} onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})} 
+                className="w-full pl-10 pr-4 py-3 bg-secondary border border-border rounded-full focus:outline-none"required
+            />
+          </div>
+        )}
+
+        {/* Forgot Password */}
+
+      </form>
+
+    </div>
 
   </div>
   </>;
