@@ -139,12 +139,52 @@ const LoginModal = () => {
           </div>
         )}
 
-        {/* Forgot Password */}
+        {/* Forgot Password Toggle Button */}
+        {
+          mode === "signin" && (
+            <div className="text-right text-sm">
+              <button
+                type="button"
+                onClick={() => setMode("forgot")}
+                className="text-primary hover:text-accent animate-smooth"
+              >
+                Forgot Password?
+              </button>
+            </div>
+        )}
+
+        {/* Submit Button */}
+        <button type="submit" disabled={isLoading}
+          className={`w-full py-3 gradient-primary flex justify-center items-center gap-2 text-primary-foreground rounded-lg font-semibold animate-smooth ${
+            isLoading ? "opacity-70 cursor-not-allowed" : "hover:glow-on-hover"
+          }`}
+          >
+            {isLoading ? (
+            <>
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              <span>
+                {mode === "reset"
+                ? "Resetting Password..."
+                : mode === "signup"
+                ? "Signing up..."
+                : mode === "forgot"
+                ? "Requesting for email..."
+                : "Signing in..."}
+              </span>
+            </>
+            ) : mode === "reset" ? (
+              "Reset Password"
+            ) : mode === "signup" ? (
+              "Create Account"
+            ) : mode === "forgot" ? (
+              "Request Reset Email"
+            ) : (
+              "Sign In"
+              )}
+        </button>
 
       </form>
-
     </div>
-
   </div>
   </>;
 };
