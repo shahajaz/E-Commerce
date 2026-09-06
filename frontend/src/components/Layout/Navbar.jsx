@@ -67,7 +67,7 @@ export default function Navbar() {
         </a>
 
         {/* DESKTOP NAV */}
-        <div className="hidden lg:flex items-center bg-orange-600 px-4 py-2 rounded-full gap-2 border border-orange-600">
+        <div className="hidden lg:flex items-center bg-[linear-gradient(135deg,hsl(24_94%_53%),hsl(20_91%_48%),hsl(0_84%_60%))] px-4 py-2 rounded-full gap-2 border border-orange-600">
           {navItems.map((item) => (
             <a
               key={item.id}

@@ -1,223 +1,9 @@
-// import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// import { axiosInstance } from "../../lib/axios";
-// import { toast } from "react-toastify";
-// import {toggleAuthPopup} from "./popupSlice";
-
-// export const register = createAsyncThunk("auth/register", async(data, thunkAPI) => {
-//   try{
-//     const res = await axiosInstance.post("/auth/register", data);
-//     toast.success(res.data.message);
-//     thunkAPI.dispatch(toggleAuthPopup());
-//     return res.data.user;
-//   }
-//   catch (error){
-//     toast.error(error.response.data.message);
-//     return thunkAPI.rejectWithValue(error.response.data.message);
-//   }
-// });
-
-// export const login = createAsyncThunk("auth/login", async(data, thunkAPI) => {
-//   try{
-//     const res = await axiosInstance.post("/auth/login", data);
-//     toast.success(res.data.message);
-//     thunkAPI.dispatch(toggleAuthPopup());
-//     return res.data.user;
-//   }
-//   catch (error){
-//     toast.error(error.response.data.message);
-//     return thunkAPI.rejectWithValue(error.response.data.message);
-//   }
-// });
-
-// export const getUser = createAsyncThunk("auth/me", async(_, thunkAPI) => {
-//   try{
-//     const res = await axiosInstance.get("/auth/me");
-//     return res.data.user;
-//   }
-//   catch (error){
-//     toast.error(error.response.data.message);
-//     return thunkAPI.rejectWithValue(error.response.data.message || "Something went wrong");
-//   }
-// });
-
-// export const logout = createAsyncThunk("auth/logout", async(data, thunkAPI) => {
-//   try{
-//     const res = await axiosInstance.get("/auth/logout");
-//     thunkAPI.dispatch(toggleAuthPopup());
-//     return null;
-//   }
-//   catch (error){
-//     toast.error(error.response.data.message);
-//     return thunkAPI.rejectWithValue(error.response.data.message || "Something went wrong");
-//   }
-// });
-
-// export const forgotPassword = createAsyncThunk("auth/forgot/password", async(email, thunkAPI) => {
-//   try{
-//     const res = await axiosInstance.post("/auth/forgot/password/forgot?frontendUrl=http://localhost:5173", { email });
-//     toast.success(res.data.message);
-//     return null;
-//   }
-//   catch (error){
-//     toast.error(error.response.data.message);
-//     return thunkAPI.rejectWithValue(error.response.data.message);
-//   }
-// });
-
-// export const resetPassword = createAsyncThunk("auth/password/reset", async({ token, password, confirmPassword }, thunkAPI) => {
-//   try{
-//     const res = await axiosInstance.put(`/auth/password/reset/${token}`, { password, confirmPassword });
-//     toast.success(res.data.message);
-//     return res.data.user;
-//   }
-//   catch (error){
-//     toast.error(error.response.data.message || "Something went wrong");
-//     return thunkAPI.rejectWithValue(error.response.data.message);
-//   }
-// });
-
-
-// export const updatePassword = createAsyncThunk("auth/password/update", async({ token, password, confirmPassword }, thunkAPI) => {
-//   try{
-//     const res = await axiosInstance.put(`/auth/password/update/`, data);
-//     toast.success(res.data.message);
-//     return res.data.user;
-//   }
-//   catch (error){
-//     const message = error.response.data.message;
-//     toast.error(message);
-//     return thunkAPI.rejectWithValue(error.response.data.message);
-//   }
-// });
-
-
-// export const updateProfile = createAsyncThunk("auth/me/update", async({ token, password, confirmPassword }, thunkAPI) => {
-//   try{
-//     const res = await axiosInstance.put(`/auth/profile/update/`, data);
-//     toast.success(res.data.message);
-//     return res.data.user;
-//   }
-//   catch (error){
-//     const message = error.response.data.message;
-//     toast.error(message);
-//     return thunkAPI.rejectWithValue(error.response.data.message);
-//   }
-// });
-
-// const authSlice = createSlice({
-//   name: "auth",
-//   initialState: {
-//     authUser: null,
-//     isSigningUp: false,
-//     isLoggingIn: false,
-//     isUpdatingProfile: false,
-//     isUpdatingPassword: false,
-//     isRequestingForToken: false,
-//     isCheckingAuth: true,
-//   },
-//   extraReducers: (builder) => {
-//     builder
-//     .addCase(register.pending, (state) => {
-//       state.isSigningUp = true;
-//     })
-//     .addCase(register.fulfilled, (state, action) => {
-//       state.isSigningUp = false;
-//       state.authUser = action.payload;
-//     })
-//     .addCase(register.rejected, (state) => {
-//       state.isSigningUp = false;
-//     })
-
-//     .addCase(login.pending, (state) => {
-//       state.isLoggingIn = true;
-//     })
-//     .addCase(login.fulfilled, (state, action) => {
-//       state.isLoggingIn = false;
-//       state.authUser = action.payload;
-//     })
-//     .addCase(login.rejected, (state) => {
-//       state.isLoggingIn = false;
-//     })
-
-//     .addCase(getUser.pending, (state) => {
-//       state.isCheckingAuth = true;
-//       state.authUser = null;
-//     })
-
-//     .addCase(getUser.fulfilled, (state, action) => {
-//       state.isCheckingAuth = false;
-//       state.authUser = action.payload;
-//     })
-//     .addCase(getUser.rejected, (state) => {
-//       state.isCheckingAuth = false;
-//       state.authUser = null;
-//     })
-
-//     .addCase(logout.fulfilled, (state, action) => {
-//       state.authUser = {};
-//     })
-
-//     .addCase(logout.rejected, (state) => {
-//       state.authUser = state.authUser;
-//     })
-
-//     .addCase(forgotPassword.pending, (state) => {
-//       state.isRequestingForToken = true;
-//     })
-//     .addCase(forgotPassword.fulfilled, (state, action) => {
-//       state.isRequestingForToken = false;
-//     })
-//     .addCase(forgotPassword.rejected, (state) => {
-//       state.isRequestingForToken = false;
-//     })
-
-//     .addCase(resetPassword.pending, (state) => {
-//       state.isUpdatingPassword = true;
-//     })
-//     .addCase(resetPassword.fulfilled, (state, action) => {
-//       state.isUpdatingPassword = false;
-//       state.authUser = action.payload;
-//     })
-//     .addCase(resetPassword.rejected, (state) => {
-//       state.isUpdatingPassword = false;
-//     })
-
-//     .addCase(updatePassword.pending, (state) => {
-//       state.isUpdatingPassword = true;
-//     })
-//     .addCase(updatePassword.fulfilled, (state, action) => {
-//       state.isUpdatingPassword = false;
-//     })
-//     .addCase(updatePassword.rejected, (state) => {
-//       state.isUpdatingPassword = false;
-//     })
-
-//     .addCase(updateProfile.pending, (state) => {
-//       state.isUpdatingProfile = true;
-//     })
-//     .addCase(updateProfile.fulfilled, (state, action) => {
-//       state.isUpdatingProfile = false;
-//       state.authUser = action.payload;
-//     })
-//     .addCase(updateProfile.rejected, (state) => {
-//       state.isUpdatingProfile = false;
-//     })
-
-//   },
-// });
-
-// export default authSlice.reducer;
-
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../lib/axios";
 import { toast } from "react-toastify";
 import { toggleAuthPopup } from "./popupSlice";
 
-/* =========================================================
-   REGISTER
-========================================================= */
-
+/* ==== REGISTER ==== */
 export const register = createAsyncThunk(
   "auth/register",
   async (data, thunkAPI) => {
@@ -240,10 +26,7 @@ export const register = createAsyncThunk(
   }
 );
 
-/* =========================================================
-   LOGIN
-========================================================= */
-
+/* === LOGIN === */
 export const login = createAsyncThunk(
   "auth/login",
   async (data, thunkAPI) => {
@@ -266,10 +49,7 @@ export const login = createAsyncThunk(
   }
 );
 
-/* =========================================================
-   GET CURRENT USER
-========================================================= */
-
+/* === GET CURRENT USER === */
 export const getUser = createAsyncThunk(
   "auth/me",
   async (_, thunkAPI) => {
@@ -287,10 +67,7 @@ export const getUser = createAsyncThunk(
   }
 );
 
-/* =========================================================
-   LOGOUT
-========================================================= */
-
+/* === LOGOUT === */
 export const logout = createAsyncThunk(
   "auth/logout",
   async (_, thunkAPI) => {
@@ -313,10 +90,7 @@ export const logout = createAsyncThunk(
   }
 );
 
-/* =========================================================
-   FORGOT PASSWORD
-========================================================= */
-
+/* === FORGOT PASSWORD === */
 export const forgotPassword = createAsyncThunk(
   "auth/forgot/password",
   async (email, thunkAPI) => {
@@ -340,10 +114,7 @@ export const forgotPassword = createAsyncThunk(
   }
 );
 
-/* =========================================================
-   RESET PASSWORD
-========================================================= */
-
+/* === RESET PASSWORD === */
 export const resetPassword = createAsyncThunk(
   "auth/password/reset",
   async ({ token, password, confirmPassword }, thunkAPI) => {
@@ -370,10 +141,7 @@ export const resetPassword = createAsyncThunk(
   }
 );
 
-/* =========================================================
-   UPDATE PASSWORD
-========================================================= */
-
+/* === UPDATE PASSWORD === */
 export const updatePassword = createAsyncThunk(
   "auth/password/update",
   async (data, thunkAPI) => {
@@ -397,10 +165,7 @@ export const updatePassword = createAsyncThunk(
   }
 );
 
-/* =========================================================
-   UPDATE PROFILE
-========================================================= */
-
+/* === UPDATE PROFILE === */
 export const updateProfile = createAsyncThunk(
   "auth/me/update",
   async (data, thunkAPI) => {
@@ -424,13 +189,9 @@ export const updateProfile = createAsyncThunk(
   }
 );
 
-/* =========================================================
-   SLICE
-========================================================= */
-
+/* === SLICE === */
 const authSlice = createSlice({
   name: "auth",
-
   initialState: {
     authUser: null,
 
@@ -449,7 +210,6 @@ const authSlice = createSlice({
     builder
 
       /* ================= REGISTER ================= */
-
       .addCase(register.pending, (state) => {
         state.isSigningUp = true;
       })
@@ -464,7 +224,6 @@ const authSlice = createSlice({
       })
 
       /* ================= LOGIN ================= */
-
       .addCase(login.pending, (state) => {
         state.isLoggingIn = true;
       })
@@ -479,7 +238,6 @@ const authSlice = createSlice({
       })
 
       /* ================= GET USER ================= */
-
       .addCase(getUser.pending, (state) => {
         state.isCheckingAuth = true;
       })
@@ -495,13 +253,11 @@ const authSlice = createSlice({
       })
 
       /* ================= LOGOUT ================= */
-
       .addCase(logout.fulfilled, (state) => {
         state.authUser = null;
       })
 
       /* ================= FORGOT PASSWORD ================= */
-
       .addCase(forgotPassword.pending, (state) => {
         state.isRequestingForToken = true;
       })
@@ -515,7 +271,6 @@ const authSlice = createSlice({
       })
 
       /* ================= RESET PASSWORD ================= */
-
       .addCase(resetPassword.pending, (state) => {
         state.isUpdatingPassword = true;
       })
@@ -530,7 +285,6 @@ const authSlice = createSlice({
       })
 
       /* ================= UPDATE PASSWORD ================= */
-
       .addCase(updatePassword.pending, (state) => {
         state.isUpdatingPassword = true;
       })
@@ -549,7 +303,6 @@ const authSlice = createSlice({
       })
 
       /* ================= UPDATE PROFILE ================= */
-
       .addCase(updateProfile.pending, (state) => {
         state.isUpdatingProfile = true;
       })
